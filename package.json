@@ -1,0 +1,14 @@
+{
+  "name": "ts-utils",
+  "version": "0.0.1",
+  "description": "TypeScript Utilities",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "typescript"
+  ],
+  "author": "Serge Vartanov <vartanov.s@gmail.com>",
+  "license": "MIT"
+}
