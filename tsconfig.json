@@ -1,0 +1,46 @@
+{
+    "compilerOptions": {
+      "lib": [
+        "dom",                                    // Include DOM Library during compilation
+        "es2015",                                 // Include ES6 Library during compilation
+        "es2016",                                 // Include ES7 Library during compilation
+        "es2017",                                 // Include ES8 Library during compilation
+        "es2018",                                 // Include ES9 Library during compilation
+        "esnext"                                  // Include latest ES library during compilation
+      ],
+      "declaration": true,                        // Emit definitions file upon compilation
+      "incremental": true,                        // Enable incremental compilation
+      "inlineSourceMap": true,                    // Emit single file with source map
+      "inlineSources": true,                      // Emit source alongside source map
+      "module": "commonjs",                       // Enforce Node.js standard module code generation
+      "moduleResolution": "node",                 // Enforce Node.js standard module resolution strategy
+      "outDir": "build",                          // Specify output structure directory
+      "removeComments": true,                     // Do not emit comments during compilation
+      "rootDir": "src",                           // Specify input file root directory
+      "target": "es6",                            // Target ES2015 during compilation
+      "tsBuildInfoFile": ".cache/.tsbuildinfo",   // Target file for incremental build information
+  
+      // "jsx": "react",                             // Support JSX in .tsx files
+  
+      "alwaysStrict": true,                       // Emit "use Strict" for each source file
+      "esModuleInterop": true,                    // Enable implicit default imports/exports
+      "experimentalDecorators": true,             // Enable ES7 decorators
+      "noImplicitAny": true,                      // Prohibit expressions with implied any type
+      "noImplicitReturns": true,                  // Enforce function return statements for all code paths
+      "noImplicitThis": true,                     // Prohibit 'this' expressions with implied any type
+      "noUnusedLocals": true,                     // Prohibit unused variables declarations
+      "noUnusedParameters": true,                 // Prohibit unused function parameters
+      "preserveConstEnums": true,                 // Retain const enum declarations
+      "strictFunctionTypes": true,                // Prohibit bi-variant function parameter checking 
+      "strictNullChecks": true,                   // Null/Undefined only assignable to themselves, void and any
+      "strictPropertyInitialization": true        // Ensure defined class properties initialized in constructor
+    },
+    "exclude": [
+      "build",                                    // Do not compile compiled files
+      "node_modules",                             // Do not compile dependencies
+      "./src/**/*.test.ts"                        // Do not compile test files
+    ],    
+    "include": [
+      "./src/**/*.ts"                             // Compile all source code .ts files
+    ]
+  }
