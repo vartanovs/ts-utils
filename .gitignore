@@ -1,0 +1,23 @@
+# Build directory
+build/
+
+# Cache directory
+.cache/
+
+# Coverage directory
+coverage/
+
+# Dependency directories
+node_modules/
+
+# Dependency lock file
+package-lock.json
+
+# Environment variables
+.env
+
+# IDE configuration
+.vscode/
+
+# OS generated file
+.DS_Store
