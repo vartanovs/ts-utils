@@ -1,14 +1,21 @@
 {
   "name": "@vartanovs/ts-utils",
-  "version": "0.0.1",
-  "description": "TypeScript Utilities",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [
-    "typescript"
-  ],
+  "version": "0.0.2",
   "author": "Serge Vartanov <vartanov.s@gmail.com>",
-  "license": "MIT"
+  "description": "TypeScript Utilities",
+  "license": "MIT",
+  "repository": "https://github.com/vartanovs/ts-utils",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "keywords": [
+    "typescript",
+    "utilities"
+  ],
+  "devDependencies": {
+    "typescript": "3.6.3"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
 }
