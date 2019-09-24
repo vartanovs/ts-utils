@@ -1,5 +1,5 @@
 {
-  "name": "ts-utils",
+  "name": "@vartanovs/ts-utils",
   "version": "0.0.1",
   "description": "TypeScript Utilities",
   "main": "index.js",
