@@ -1,6 +1,9 @@
 # Dependency lock file
 package-lock.json
 
+# Lerna configuration
+lerna.json
+
 # Tracking configuration
 .gitignore
 .npmignore
