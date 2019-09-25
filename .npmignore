@@ -1,2 +1,9 @@
-# Source code directory
-src/
+# Dependency lock file
+package-lock.json
+
+# Tracking configuration
+.gitignore
+.npmignore
+
+# Typescript configuration
+tsconfig.json
