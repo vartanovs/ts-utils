@@ -1,0 +1,17 @@
+{
+  "name": "eslint-config-vartanovs",
+  "version": "0.0.1",
+  "description": "ESLint Configuration for TypeScript Projects",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "eslint"
+  ],
+  "author": "Serge Vartanov <vartanov.s@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "6.4.0"
+  }
+}
