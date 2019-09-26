@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-vartanovs",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "ESLint Configuration for TypeScript Projects",
   "main": "index.js",
   "scripts": {
