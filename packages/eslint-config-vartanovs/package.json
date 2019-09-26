@@ -1,7 +1,9 @@
 {
   "name": "eslint-config-vartanovs",
   "version": "0.0.3",
+  "author": "Serge Vartanov <vartanov.s@gmail.com>",
   "description": "ESLint Configuration for TypeScript Projects",
+  "license": "MIT",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,8 +11,6 @@
   "keywords": [
     "eslint"
   ],
-  "author": "Serge Vartanov <vartanov.s@gmail.com>",
-  "license": "MIT",
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "2.3.1",
     "@typescript-eslint/parser": "2.3.1",

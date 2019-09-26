@@ -12,6 +12,8 @@
     "utilities"
   ],
   "devDependencies": {
+    "eslint": "6.4.0",
+    "eslint-config-vartanovs": "0.0.3",
     "lerna": "3.16.4",
     "typescript": "3.6.3"
   },
