@@ -4,6 +4,9 @@ package-lock.json
 # Lerna configuration
 lerna.json
 
+# Logs
+*.log
+
 # Tracking configuration
 .gitignore
 .npmignore

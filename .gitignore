@@ -19,5 +19,8 @@ package-lock.json
 # IDE configuration
 .vscode/
 
+# Logs
+*.log
+
 # OS generated file
 .DS_Store
