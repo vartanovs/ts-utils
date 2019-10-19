@@ -16,8 +16,22 @@ module.exports = {
   plugins: ['@typescript-eslint'],
   rules: {
     '@typescript-eslint/await-thenable': 'error',
+    '@typescript-eslint/camelcase': ['error', { properties: 'never' }],
     '@typescript-eslint/class-name-casing': 'error',
-    '@typescript-eslint/indent': ['error', 2],
+    '@typescript-eslint/ban-ts-ignore': 'error',
+    '@typescript-eslint/indent': ['error', 2, {
+      SwitchCase: 1,
+      VariableDeclarator: 1,
+      outerIIFEBody: 1,
+      FunctionDeclaration: { parameters: 1, body: 1 },
+      FunctionExpression: { parameters: 1, body: 1 },
+      CallExpression: { arguments: 1 },
+      ArrayExpression: 1,
+      ObjectExpression: 1,
+      ImportDeclaration: 1,
+      flatTernaryExpression: 1,
+      ignoreComments: false
+    }],
     '@typescript-eslint/no-explicit-any': 'error',
     '@typescript-eslint/no-unused-vars': 'error',
     '@typescript-eslint/quotes': ['error', 'single'],
