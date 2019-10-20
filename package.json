@@ -1,6 +1,6 @@
 {
   "name": "@vartanovs/ts-utils",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "Serge Vartanov <vartanov.s@gmail.com>",
   "description": "TypeScript Utilities",
   "license": "MIT",
@@ -13,7 +13,7 @@
   ],
   "devDependencies": {
     "eslint": "6.4.0",
-    "eslint-config-vartanovs": "0.0.3",
+    "eslint-config-vartanovs": "0.1.0",
     "lerna": "3.16.4",
     "typescript": "3.6.3"
   },
