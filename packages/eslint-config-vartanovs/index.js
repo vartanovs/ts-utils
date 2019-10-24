@@ -15,10 +15,15 @@ module.exports = {
   },
   plugins: ['@typescript-eslint'],
   rules: {
+    '@typescript-eslint/array-type': 'error',
     '@typescript-eslint/await-thenable': 'error',
+    '@typescript-eslint/ban-ts-ignore': 'error',
+    '@typescript-eslint/brace-style': ['error', '1tbs', { allowSingleLine: true }],
     '@typescript-eslint/camelcase': ['error', { properties: 'never' }],
     '@typescript-eslint/class-name-casing': 'error',
-    '@typescript-eslint/ban-ts-ignore': 'error',
+    '@typescript-eslint/consistent-type-assertions': 'error',
+    '@typescript-eslint/cconsistent-type-definitions': ['error', 'interface'],
+    '@typescript-eslint/func-call-spacing': ['error', 'never'],
     '@typescript-eslint/indent': ['error', 2, {
       ArrayExpression: 1,
       CallExpression: { arguments: 1 },
@@ -33,7 +38,10 @@ module.exports = {
       VariableDeclarator: 1,
       ignoreComments: false
     }],
+    '@typescript-eslint/member-delimiter-style)': 'error',
+    '@typescript-eslint/no-array-constructor': 'error',
     '@typescript-eslint/no-explicit-any': 'error',
+    '@typescript-eslint/no-extra-parens': 'error',
     '@typescript-eslint/no-unused-vars': 'error',
     '@typescript-eslint/quotes': ['error', 'single'],
     '@typescript-eslint/require-await': 'error',
