@@ -12,10 +12,10 @@
     "utilities"
   ],
   "devDependencies": {
-    "eslint": "6.4.0",
+    "eslint": "6.5.1",
     "eslint-config-vartanovs": "0.1.1",
-    "lerna": "3.16.4",
-    "typescript": "3.6.3"
+    "lerna": "3.18.3",
+    "typescript": "3.6.4"
   },
   "scripts": {
     "build": "tsc",
