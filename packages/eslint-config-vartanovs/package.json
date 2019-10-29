@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-vartanovs",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "Serge Vartanov <vartanov.s@gmail.com>",
   "description": "ESLint Configuration for TypeScript Projects",
   "license": "MIT",
@@ -12,10 +12,10 @@
     "eslint"
   ],
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "2.5.0",
-    "@typescript-eslint/parser": "2.5.0"
+    "@typescript-eslint/eslint-plugin": "2.6.0",
+    "@typescript-eslint/parser": "2.6.0"
   },
   "devDependencies": {
-    "eslint": "6.5.1"
+    "eslint": "6.6.0"
   }
 }
