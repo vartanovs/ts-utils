@@ -42,10 +42,24 @@ module.exports = {
     '@typescript-eslint/no-array-constructor': 'error',
     '@typescript-eslint/no-explicit-any': 'error',
     '@typescript-eslint/no-extra-parens': 'error',
+    '@typescript-eslint/no-extraneous-class': 'error',
+    '@typescript-eslint/no-magic-numbers': ['error', {
+      ignoreEnums: true,
+      ignoreNumericLiteralTypes:
+      true, ignoreReadonlyClassProperties: true
+    }],
+    '@typescript-eslint/no-misused-new': 'error',
+    '@typescript-eslint/no-misused-promises': 'error',
+    '@typescript-eslint/no-this-alias': ['error', { allowDestructuring: true }],
+    '@typescript-eslint/no-unnecessary-condition': 'error',
+    '@typescript-eslint/no-unnecessary-type-assertion': 'error',
     '@typescript-eslint/no-unused-vars': 'error',
+    '@typescript-eslint/no-useless-constructor': 'error',
+    '@typescript-eslint/prefer-includesr': 'error',
     '@typescript-eslint/quotes': ['error', 'single'],
     '@typescript-eslint/require-await': 'error',
     '@typescript-eslint/semi': ['error', 'always'],
+    '@typescript-eslint/type-annotation-spacing': 'error',
 
     'comma-dangle': ['error', 'always-multiline'],
     'eol-last': ['error', 'always'],
