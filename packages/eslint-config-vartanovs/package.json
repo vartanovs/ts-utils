@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-vartanovs",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "author": "Serge Vartanov <vartanov.s@gmail.com>",
   "description": "ESLint Configuration for TypeScript Projects",
   "license": "MIT",
