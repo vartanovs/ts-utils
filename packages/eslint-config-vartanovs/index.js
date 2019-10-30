@@ -69,6 +69,7 @@ module.exports = {
     'no-dupe-args': 'error',
     'no-dupe-keys': 'error',
     'no-trailing-spaces': 'error',
+    'no-unused-expression': ['error', { allowTernary: true }],
     'no-var': 'error',
     'prefer-const': ['error', { destructuring: 'all'}],
   }
