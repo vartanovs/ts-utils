@@ -1,0 +1,20 @@
+{
+    "name": "eslint-config-vartanovs-js",
+    "version": "0.1.0",
+    "author": "Serge Vartanov <vartanov.s@gmail.com>",
+    "description": "ESLint Configuration for JavaScript Projects",
+    "license": "MIT",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+      "eslint",
+      "javascript"
+    ],
+    "dependencies": {
+    },
+    "devDependencies": {
+    }
+  }
+  
