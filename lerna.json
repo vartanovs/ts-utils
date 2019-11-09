@@ -1,13 +1,16 @@
 {
-  "npmClient": "npm",
-  "packages": [
-    "packages/*"
-  ],
   "command": {
     "version": {
       "allowBranch": "master",
       "message": "chore(release): publish %s"
     }
   },
+  "packages": [
+    "packages/*"
+  ],
+  "npmClient": "npm",
+  "npmClientArgs": [
+    "--no-lockfile"
+  ],
   "version": "independent"
 }
