@@ -14,8 +14,8 @@
   "devDependencies": {
     "eslint": "6.6.0",
     "eslint-config-vartanovs": "0.1.5",
-    "lerna": "3.18.3",
-    "typescript": "3.6.4"
+    "lerna": "3.18.4",
+    "typescript": "3.7.2"
   },
   "scripts": {
     "build": "tsc",
