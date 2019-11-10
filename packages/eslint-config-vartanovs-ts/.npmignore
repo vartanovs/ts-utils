@@ -1,5 +1,8 @@
 # Dependency lock file
 package-lock.json
 
+# Linting configuration
+.eslint.js
+
 # Tracking configuration
 .npmignore

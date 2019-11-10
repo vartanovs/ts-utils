@@ -1,3 +1,5 @@
+/* eslint-disable no-magic-numbers */
+
 module.exports = {
   extends: [
     'vartanovs-js',
@@ -5,13 +7,25 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
-      modules: true
+      modules: true,
     },
     ecmaVersion: 6,
-    sourceType: 'module'
+    sourceType: 'module',
   },
   plugins: ['@typescript-eslint'],
   rules: {
+    'brace-style': 'off',
+    'camelcase': 'off',
+    'func-call-spacing': 'off',
+    'indent': 'off',
+    'no-extra-parens': 'off',
+    'no-magic-numbers': 'off',
+    'no-unused-vars': 'off',
+    'no-useless-constructor': 'off',
+    'quotes': 'off',
+    'require-await': 'off',
+    'semi': 'off',
+
     '@typescript-eslint/array-type': 'error',
     '@typescript-eslint/await-thenable': 'error',
     '@typescript-eslint/ban-ts-ignore': 'error',
@@ -32,7 +46,7 @@ module.exports = {
       outerIIFEBody: 1,
       SwitchCase: 1,
       VariableDeclarator: 1,
-      ignoreComments: false
+      ignoreComments: false,
     }],
     '@typescript-eslint/member-delimiter-style': 'error',
     '@typescript-eslint/no-array-constructor': 'error',
@@ -40,9 +54,12 @@ module.exports = {
     '@typescript-eslint/no-extra-parens': 'error',
     '@typescript-eslint/no-extraneous-class': 'error',
     '@typescript-eslint/no-magic-numbers': ['error', {
+      detectObjects: true,
+      enforceConst: true,
+      ignoreArrayIndexes: true,
       ignoreEnums: true,
       ignoreNumericLiteralTypes: true,
-      ignoreReadonlyClassProperties: true
+      ignoreReadonlyClassProperties: true,
     }],
     '@typescript-eslint/no-misused-new': 'error',
     '@typescript-eslint/no-misused-promises': 'error',
@@ -55,5 +72,5 @@ module.exports = {
     '@typescript-eslint/require-await': 'error',
     '@typescript-eslint/semi': ['error', 'always'],
     '@typescript-eslint/type-annotation-spacing': 'error',
-  }
+  },
 };
