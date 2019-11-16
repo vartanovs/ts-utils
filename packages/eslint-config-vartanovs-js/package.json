@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-vartanovs-js",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "author": "Serge Vartanov <vartanov.s@gmail.com>",
   "description": "ESLint Configuration for JavaScript Projects",
   "license": "MIT",
