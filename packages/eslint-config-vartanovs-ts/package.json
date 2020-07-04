@@ -13,11 +13,9 @@
     "typescript"
   ],
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "2.6.1",
-    "@typescript-eslint/parser": "2.6.1",
+    "eslint": "7.4.0",
+    "@typescript-eslint/eslint-plugin": "3.5.0",
+    "@typescript-eslint/parser": "3.5.0",
     "eslint-config-vartanovs-js": "0.4.0"
-  },
-  "devDependencies": {
-    "eslint": "6.6.0"
   }
 }

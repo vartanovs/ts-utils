@@ -12,7 +12,8 @@
     "utilities"
   ],
   "devDependencies": {
-    "lerna": "3.18.4"
+    "eslint": "7.4.0",
+    "lerna": "3.22.1"
   },
   "scripts": {
     "build": "tsc",
