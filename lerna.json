@@ -5,12 +5,12 @@
       "message": "chore(release): publish %s"
     }
   },
-  "packages": [
-    "packages/*"
-  ],
   "npmClient": "npm",
   "npmClientArgs": [
     "--no-lockfile"
+  ],
+  "packages": [
+    "packages/*"
   ],
   "version": "independent"
 }
