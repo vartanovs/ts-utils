@@ -17,6 +17,7 @@
   },
   "scripts": {
     "build": "tsc",
+    "install:deps": "./scripts/install_local_deps.sh",
     "test": "echo \"Error: no test specified\" && exit 1"
   }
 }
