@@ -5,6 +5,7 @@ This repository contains a collection of utilities written in TypeScript.
 ## Scripts
 
 - Install Dependencies: `npm run install:deps`
+- Publish Package Updates: `npx lerna publish <patch|minor|major>`
 
 ## List of Utilities
 
