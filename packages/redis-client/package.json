@@ -1,0 +1,20 @@
+{
+  "name": "@vartanovs/redis-client",
+  "version": "0.0.0",
+  "author": "Serge Vartanov <vartanov.s@gmail.com>",
+  "description": "Client to access redis data store",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "keywords": [
+    "redis"
+  ],
+  "dependencies": {
+    "@types/ioredis": "4.17.3",
+    "ioredis": "4.17.3"
+  },
+  "scripts": {
+    "build": "tsc build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
