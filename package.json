@@ -20,9 +20,9 @@
     "typescript": "3.9.7"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "lerna run --stream build",
     "install:deps": "./scripts/install_local_deps.sh",
     "lint": "lerna run --stream lint",
-    "test": "jest"
+    "test": "lerna run --stream test"
   }
 }

@@ -20,7 +20,7 @@
     "ioredis": "4.17.3"
   },
   "scripts": {
-    "build": "tsc --config tsconfig.build.json",
+    "build": "tsc --project tsconfig.build.json",
     "clean": "rm -rf ./lib",
     "lint": "eslint ./**/*.ts --fix",
     "prepublish": "npm run clean && npm run build",
