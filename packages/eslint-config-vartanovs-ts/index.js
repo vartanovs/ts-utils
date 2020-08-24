@@ -66,7 +66,10 @@ module.exports = {
     '@typescript-eslint/keyword-spacing': 'error',
     '@typescript-eslint/lines-between-class-members': ['error', 'always', { exceptAfterOverload: true, exceptAfterSingleLine: true }],
     '@typescript-eslint/member-delimiter-style': 'error',
-    '@typescript-eslint/naming-convention': 'error',
+    '@typescript-eslint/naming-convention': ['error', {
+      "selector": "enumMember",
+      "format": ["PascalCase", "UPPER_CASE"]
+    }],
     '@typescript-eslint/no-array-constructor': 'error',
     '@typescript-eslint/no-confusing-non-null-assertion': 'error',
     '@typescript-eslint/no-dupe-class-members': 'error',

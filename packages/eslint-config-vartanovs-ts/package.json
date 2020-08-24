@@ -5,9 +5,6 @@
   "description": "ESLint Configuration for TypeScript Projects",
   "license": "MIT",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "keywords": [
     "eslint",
     "typescript"
