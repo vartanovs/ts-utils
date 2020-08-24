@@ -69,6 +69,23 @@ describe('server/lib/redisClient', () => {
     });
   });
 
+  describe('.delete()', () => {
+    beforeEach(() => {
+      jest.spyOn(mockRedis, 'del').mockImplementation(() => Promise.resolve(1));
+    });
+
+    it('should call the .del() method on the redis client', async () => {
+      await expect(redisClient.delete(mockKey)).resolves.toEqual(1);
+      expect(mockRedis.del).toHaveBeenCalledWith(mockKey);
+    });
+
+    it('should reject with an error if .get() method is called before the client is initialized', async () => {
+      await expect(uninitializedRedisClient.delete(mockKey)).rejects.toThrowError();
+      expect(consoleErrorSpy).toHaveBeenCalled();
+      expect(mockRedis.del).not.toHaveBeenCalled();
+    });
+  });
+
   describe('.get()', () => {
     beforeEach(() => {
       jest.spyOn(mockRedis, 'get').mockImplementation(() => Promise.resolve(mockValue));

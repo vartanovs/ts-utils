@@ -21,9 +21,10 @@ const redisOptions = {
 const redisClient = new RedisClient(redisOptions);
 redisClient.init();
 
-// Set and get a string value using a unique key
+// Set, get and delete a string value using a unique key
 await redisClient.set('key', 'value');
 const val = await redisClient.get('key');
+await redisClient.delete('key');
 
 // Increment a counter
 await redisClient.increment('counterKey'); // Increment by 1

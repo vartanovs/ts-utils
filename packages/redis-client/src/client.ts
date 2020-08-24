@@ -23,6 +23,12 @@ class RedisClient {
     return this;
   }
 
+  public delete(key: string) {
+    if (this.client) return this.client.del(key);
+
+    return RedisClient.throwMissingClientError('delete');
+  }
+
   public get(key: string) {
     if (this.client) return this.client.get(key);
 
@@ -36,13 +42,13 @@ class RedisClient {
         : this.client.incrby(key, amount);
     }
 
-    return RedisClient.throwMissingClientError('get');
+    return RedisClient.throwMissingClientError('increment');
   }
 
   public set(key: string, val: string) {
     if (this.client) return this.client.set(key, val);
 
-    return RedisClient.throwMissingClientError('get');
+    return RedisClient.throwMissingClientError('set');
   }
 
   private static throwMissingClientError(command: string) {
