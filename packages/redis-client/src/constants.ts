@@ -5,5 +5,5 @@ export enum RedisMessages {
   Reconnect = 'Reconnected To Redis server',
 
   Close = 'Connection to Redis server has closed',
-  Error = 'Redis Error: '
+  Error = 'Redis Error: ',
 }
