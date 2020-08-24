@@ -2,11 +2,13 @@
     "extends": "../../tsconfig.json",
 
     "compilerOptions": {
+        "outDir": "lib",                // Specify output structure directory
         "rootDir": "src",               // Specify input file root directory
     },
 
     "exclude": [
-        "node_modules"                  // Do not compile dependencies
+        "node_modules",                 // Do not compile dependencies
+        "tests"                         // Do not compile test suite files
     ],
     "include": [
         "src/**/*"                      // Compile all source code .ts files

@@ -6,4 +6,4 @@ export enum RedisMessages {
 
   CLOSE = 'Connection to Redis server has closed',
   ERROR = 'Redis Error: ',
-}
+};

@@ -9,12 +9,15 @@
   "keywords": [
     "redis"
   ],
+  "devDependencies": {
+    "typescript": "3.9.7"
+  },
   "dependencies": {
     "@types/ioredis": "4.17.3",
     "ioredis": "4.17.3"
   },
   "scripts": {
-    "build": "tsc build",
+    "build": "tsc",
     "test": "jest"
   }
 }
