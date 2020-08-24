@@ -4,9 +4,9 @@ import RedisClient from '../src/client';
 import { RedisMessages } from '../src/constants';
 
 describe('server/lib/redisClient', () => {
-  let consoleLogSpy: jasmine.Spy;
-  let consoleWarnSpy: jasmine.Spy;
-  let consoleErrorSpy: jasmine.Spy;
+  let consoleLogSpy: jest.SpyInstance;
+  let consoleWarnSpy: jest.SpyInstance;
+  let consoleErrorSpy: jest.SpyInstance;
   let redisClient: RedisClient;
   let uninitializedRedisClient: RedisClient;
 
@@ -24,9 +24,9 @@ describe('server/lib/redisClient', () => {
     uninitializedRedisClient = new RedisClient(mockOptions);
     redisClient.init();
 
-    consoleLogSpy = spyOn(console, 'log').and.callFake(() => {});
-    consoleWarnSpy = spyOn(console, 'warn').and.callFake(() => {});
-    consoleErrorSpy = spyOn(console, 'error').and.callFake(() => {});
+    consoleLogSpy = jest.spyOn(console, 'log').mockReturnValue();
+    consoleWarnSpy = jest.spyOn(console, 'warn').mockReturnValue();
+    consoleErrorSpy = jest.spyOn(console, 'error').mockReturnValue();
   });
 
   describe('new RedisClient.init()', () => {
@@ -38,34 +38,34 @@ describe('server/lib/redisClient', () => {
     it('should log a warning if host or port are missing from options', () => {
       new RedisClient().init();
       expect(Redis).toHaveBeenCalledWith(undefined);
-      expect(consoleWarnSpy).toHaveBeenCalledWith(RedisMessages.MISSING_OPTIONS);
+      expect(consoleWarnSpy).toHaveBeenCalledWith(RedisMessages.MissingOptions);
     });
-  })
+  });
 
   describe('this.client.on()', () => {
     it('should log a message when connected', () => {
       mockRedis.emit('connect');
-      expect(consoleLogSpy).toHaveBeenCalledWith(RedisMessages.CONNECT);
+      expect(consoleLogSpy).toHaveBeenCalledWith(RedisMessages.Connect);
     });
 
     it('should log a message when ready', () => {
       mockRedis.emit('ready');
-      expect(consoleLogSpy).toHaveBeenCalledWith(RedisMessages.READY);
+      expect(consoleLogSpy).toHaveBeenCalledWith(RedisMessages.Ready);
     });
 
     it('should log a message when reconnecting', () => {
       mockRedis.emit('reconnecting');
-      expect(consoleLogSpy).toHaveBeenCalledWith(RedisMessages.RECONNECT);
+      expect(consoleLogSpy).toHaveBeenCalledWith(RedisMessages.Reconnect);
     });
 
     it('should log a message when closed', () => {
       mockRedis.emit('close');
-      expect(consoleLogSpy).toHaveBeenCalledWith(RedisMessages.CLOSE);
+      expect(consoleLogSpy).toHaveBeenCalledWith(RedisMessages.Close);
     });
 
     it('should log an error when an error is emitted by the client', () => {
       mockRedis.emit('error', mockError);
-      expect(consoleErrorSpy).toHaveBeenCalledWith(RedisMessages.ERROR, mockError);
+      expect(consoleErrorSpy).toHaveBeenCalledWith(RedisMessages.Error, mockError);
     });
   });
 
@@ -78,7 +78,7 @@ describe('server/lib/redisClient', () => {
       await expect(redisClient.get(mockKey)).resolves.toEqual(mockValue);
       expect(mockRedis.get).toHaveBeenCalledWith(mockKey);
     });
-    
+
     it('should reject with an error if .get() method is called before the client is initialized', async () => {
       await expect(uninitializedRedisClient.get(mockKey)).rejects.toThrowError();
       expect(consoleErrorSpy).toHaveBeenCalled();
@@ -88,8 +88,8 @@ describe('server/lib/redisClient', () => {
 
   describe('.increment()', () => {
     beforeEach(() => {
-      jest.spyOn(mockRedis, 'incr').mockImplementation(() => Promise.resolve(mockCount + 1));
-      jest.spyOn(mockRedis, 'incrby').mockImplementation(() => Promise.resolve(mockCount + mockIncrementValue));
+      jest.spyOn(mockRedis, 'incr').mockResolvedValue(mockCount + 1);
+      jest.spyOn(mockRedis, 'incrby').mockResolvedValue(mockCount + mockIncrementValue);
     });
 
     it('should call the .incr() method on the redis client when not given an increment value', async () => {
@@ -101,7 +101,7 @@ describe('server/lib/redisClient', () => {
       await expect(redisClient.increment(mockKey, mockIncrementValue)).resolves.toEqual(mockCount + mockIncrementValue);
       expect(mockRedis.incrby).toHaveBeenCalledWith(mockKey, mockIncrementValue);
     });
-    
+
     it('should reject with an error if .increment() method is called before the client is initialized', async () => {
       await expect(uninitializedRedisClient.increment(mockKey, mockIncrementValue)).rejects.toThrowError();
       expect(consoleErrorSpy).toHaveBeenCalled();
@@ -112,14 +112,16 @@ describe('server/lib/redisClient', () => {
 
   describe('.set()', () => {
     beforeEach(() => {
-      jest.spyOn(mockRedis, 'set').mockImplementation(() => Promise.resolve(mockValue));
+      const setSpy = jest.spyOn(mockRedis, 'set');
+      // Bug in jest code prevents setSpy from resolving. The following type-cast allows expected resolution.
+      (setSpy as unknown as jest.SpyInstance<Promise<'OK' | null>>).mockResolvedValue('OK');
     });
 
     it('should call the .set() method on the redis client', async () => {
-      await expect(redisClient.set(mockKey, mockValue)).resolves.toEqual(mockValue);
+      await expect(redisClient.set(mockKey, mockValue)).resolves.toEqual('OK');
       expect(mockRedis.set).toHaveBeenCalledWith(mockKey, mockValue);
     });
-    
+
     it('should reject with an error if .set() method is called before the client is initialized', async () => {
       await expect(uninitializedRedisClient.set(mockKey, mockValue)).rejects.toThrowError();
       expect(consoleErrorSpy).toHaveBeenCalled();

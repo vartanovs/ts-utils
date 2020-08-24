@@ -5,7 +5,7 @@ This package contains a client to access a redis data store.
 ## Installation
 
 ```shell
-$ npm install @vartanovs/redis-client
+_$ npm install @vartanovs/redis-client
 ```
 
 ## Basic Usage

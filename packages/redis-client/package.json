@@ -9,6 +9,9 @@
   "keywords": [
     "redis"
   ],
+  "files": [
+    "/lib"
+  ],
   "devDependencies": {
     "typescript": "3.9.7"
   },
@@ -17,7 +20,10 @@
     "ioredis": "4.17.3"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "tsc --config tsconfig.build.json",
+    "clean": "rm -rf ./lib",
+    "lint": "eslint ./**/*.ts --fix",
+    "prepublish": "npm run clean && npm run build",
     "test": "jest"
   }
 }

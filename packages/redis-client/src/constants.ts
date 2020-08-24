@@ -1,9 +1,9 @@
 export enum RedisMessages {
-  CONNECT = 'Connected to Redis server',
-  MISSING_OPTIONS = 'Redis configuration missing host:port - using defaults',
-  READY = 'Redis server ready to receive commands',
-  RECONNECT = 'Reconnected To Redis server',
+  Connect = 'Connected to Redis server',
+  MissingOptions = 'Redis configuration missing host:port - using defaults',
+  Ready = 'Redis server ready to receive commands',
+  Reconnect = 'Reconnected To Redis server',
 
-  CLOSE = 'Connection to Redis server has closed',
-  ERROR = 'Redis Error: ',
-};
+  Close = 'Connection to Redis server has closed',
+  Error = 'Redis Error: ',
+}
