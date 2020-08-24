@@ -13,11 +13,14 @@
   ],
   "devDependencies": {
     "eslint": "7.7.0",
-    "lerna": "3.22.1"
+    "jest": "26.4.2",
+    "lerna": "3.22.1",
+    "ts-jest": "26.2.0",
+    "typescript": "3.9.7"
   },
   "scripts": {
     "build": "tsc",
     "install:deps": "./scripts/install_local_deps.sh",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   }
 }
