@@ -22,13 +22,13 @@
   "scripts": {
     "build": "lerna run --stream build",
     "install:deps": "./scripts/install_local_deps.sh",
-    "test:compile": "lerna run --stream test:compile --since master",
+    "test:compile": "lerna run --stream test:compile --since origin/master",
     "test:compile:all": "lerna run --stream test:compile",
-    "test:coverage": "lerna run --stream test:coverage --since master",
+    "test:coverage": "lerna run --stream test:coverage --since origin/master",
     "test:coverage:all": "lerna run --stream test:coverage",
-    "test:lint": "lerna run --stream test:lint --since master",
+    "test:lint": "lerna run --stream test:lint --since origin/master",
     "test:lint:all": "lerna run --stream test:lint",
-    "test:unit": "lerna run --stream test:unit --since master",
+    "test:unit": "lerna run --stream test:unit --since origin/master",
     "test:unit:all": "lerna run --stream test:unit"
   }
 }
