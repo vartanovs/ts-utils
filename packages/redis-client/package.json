@@ -13,7 +13,7 @@
     "/lib"
   ],
   "devDependencies": {
-    "typescript": "3.9.7"
+    "typescript": "4.0.3"
   },
   "dependencies": {
     "@types/ioredis": "4.17.3",
@@ -24,6 +24,10 @@
     "clean": "rm -rf ./lib",
     "lint": "eslint ./src/*.ts ./tests/*.ts --fix",
     "prepublish": "npm run clean && npm run build",
-    "test": "jest"
+    "test": "eslint ./src/*.ts ./tests/*.ts && tsc --noEmit && jest --coverage",
+    "test:compile": "tsc --noEmit",
+    "test:coverage": "jest --coverage",
+    "test:lint": "eslint ./src/*.ts ./tests/*.ts",
+    "test:unit": "jest"
   }
 }

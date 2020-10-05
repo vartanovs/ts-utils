@@ -1,0 +1,36 @@
+name: Pull Request Workflow
+
+on:
+    pull_request:
+        branches:
+            - master
+
+jobs:
+    compile:
+        name: Compile Test
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - run: npm install
+            - run: npm run test:compile
+    coverage:
+        name: Code Coverage Test
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - run: npm install
+            - run: npm run test:coverage
+    lint:
+        name: Lint Test
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - run: npm install
+            - run: npm run test:lint
+    unit:
+        name: Unit Test
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - run: npm install
+            - run: npm run test:unit
