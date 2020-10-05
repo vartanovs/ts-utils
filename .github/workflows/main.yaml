@@ -11,8 +11,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2
-                with:
-                    ref: master
+            - run: git fetch --no-tags --prune --depth=1 origin +refs/heads/master:refs/remotes/origin/master
             - run: npm install
             - run: npm run test:compile
     coverage:
@@ -20,8 +19,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2
-                with:
-                    ref: master
+            - run: git fetch --no-tags --prune --depth=1 origin +refs/heads/master:refs/remotes/origin/master
             - run: npm install
             - run: npm run test:coverage
     lint:
@@ -29,8 +27,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2
-                with:
-                    ref: master
+            - run: git fetch --no-tags --prune --depth=1 origin +refs/heads/master:refs/remotes/origin/master
             - run: npm install
             - run: npm run test:lint
     unit:
@@ -38,7 +35,6 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2
-                with:
-                    ref: master
+            - run: git fetch --no-tags --prune --depth=1 origin +refs/heads/master:refs/remotes/origin/master
             - run: npm install
             - run: npm run test:unit
