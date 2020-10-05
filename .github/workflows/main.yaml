@@ -11,30 +11,30 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2
-            - run: git fetch --no-tags --prune --depth=1 origin +refs/heads/master:refs/remotes/origin/master
-            - run: npm install
+            - run: npm install -D -E lerna@3.22.1 --no-package-lock
+            - run: npx lerna bootstrap --hoist
             - run: npm run test:compile
     coverage:
         name: Code Coverage Test
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2
-            - run: git fetch --no-tags --prune --depth=1 origin +refs/heads/master:refs/remotes/origin/master
-            - run: npm install
+            - run: npm install -D -E lerna@3.22.1 --no-package-lock
+            - run: npx lerna bootstrap --hoist
             - run: npm run test:coverage
     lint:
         name: Lint Test
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2
-            - run: git fetch --no-tags --prune --depth=1 origin +refs/heads/master:refs/remotes/origin/master
-            - run: npm install
+            - run: npm install -D -E lerna@3.22.1 --no-package-lock
+            - run: npx lerna bootstrap --hoist
             - run: npm run test:lint
     unit:
         name: Unit Test
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2
-            - run: git fetch --no-tags --prune --depth=1 origin +refs/heads/master:refs/remotes/origin/master
-            - run: npm install
+            - run: npm install -D -E lerna@3.22.1 --no-package-lock
+            - run: npx lerna bootstrap --hoist
             - run: npm run test:unit
