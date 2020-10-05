@@ -14,5 +14,12 @@
     "@typescript-eslint/parser": "4.3.0",
     "eslint": "7.10.0",
     "eslint-config-vartanovs-js": "0.6.0"
+  },
+  "scripts": {
+    "test": "echo \"Info: No test suite for package eslint-config-vartanovs-ts\" && exit 0",
+    "test:compile": "echo \"Info: No compilation for package eslint-config-vartanovs-ts\" && exit 0",
+    "test:coverage": "echo \"Info: No code coverage for package eslint-config-vartanovs-ts\" && exit 0",
+    "test:lint": "echo \"Info: No linting for package eslint-config-vartanovs-ts\" && exit 0",
+    "test:unit": "echo \"Info: No unit tests for package eslint-config-vartanovs-ts\" && exit 0"
   }
 }
