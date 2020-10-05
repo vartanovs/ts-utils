@@ -35,9 +35,16 @@ describe('server/lib/redisClient', () => {
       expect(Redis).toHaveBeenCalledWith(mockOptions);
     });
 
-    it('should log a warning if host or port are missing from options', () => {
+    it('should log a warning if initialization options are missing', () => {
       new RedisClient().init();
       expect(Redis).toHaveBeenCalledWith(undefined);
+      expect(consoleWarnSpy).toHaveBeenCalledWith(RedisMessages.MissingOptions);
+    });
+
+    it('should log a warning if initialization options are incomplete', () => {
+      const { port, ...partialOptions } = mockOptions;
+      new RedisClient(partialOptions).init();
+      expect(Redis).toHaveBeenCalledWith(partialOptions);
       expect(consoleWarnSpy).toHaveBeenCalledWith(RedisMessages.MissingOptions);
     });
   });
