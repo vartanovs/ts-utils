@@ -12,17 +12,23 @@
     "utilities"
   ],
   "devDependencies": {
-    "eslint": "7.7.0",
+    "eslint": "7.10.0",
     "eslint-config-vartanovs-ts": "0.6.0",
     "jest": "26.4.2",
     "lerna": "3.22.1",
-    "ts-jest": "26.2.0",
-    "typescript": "3.9.7"
+    "ts-jest": "26.4.1",
+    "typescript": "4.0.3"
   },
   "scripts": {
     "build": "lerna run --stream build",
     "install:deps": "./scripts/install_local_deps.sh",
-    "lint": "lerna run --stream lint",
-    "test": "lerna run --stream test"
+    "test:compile": "lerna run --stream test:compile --since origin/master",
+    "test:compile:all": "lerna run --stream test:compile",
+    "test:coverage": "lerna run --stream test:coverage --since origin/master",
+    "test:coverage:all": "lerna run --stream test:coverage",
+    "test:lint": "lerna run --stream test:lint --since origin/master",
+    "test:lint:all": "lerna run --stream test:lint",
+    "test:unit": "lerna run --stream test:unit --since origin/master",
+    "test:unit:all": "lerna run --stream test:unit"
   }
 }
