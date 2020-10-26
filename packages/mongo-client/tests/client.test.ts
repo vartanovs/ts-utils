@@ -1,3 +1,5 @@
+/* global spyOn */
+
 import * as mongodb from 'mongodb';
 
 import MongoClient from '../src/client';
