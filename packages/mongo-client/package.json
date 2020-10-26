@@ -31,4 +31,3 @@
     "test:unit": "NODE_ENV=test jest"
   }
 }
-  

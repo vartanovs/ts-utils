@@ -1,17 +1,14 @@
 {
-    "extends": "../../tsconfig.json",
-
-    "compilerOptions": {
-        "outDir": "lib",                // Specify output structure directory
-        "rootDir": ".",                 // Specify input file root directory
-    },
-
-    "exclude": [
-        "node_modules",                 // Do not compile dependencies
-    ],
-
-    "include": [
-        "src/**/*.ts",                  // Compile all source code .ts files
-        "tests/**/*.ts"                 // Compile all test code .ts files
-    ]
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "lib",                // Specify output structure directory
+    "rootDir": ".",                 // Specify input file root directory
+  },
+  "exclude": [
+    "node_modules",                 // Do not compile dependencies
+  ],
+  "include": [
+    "src/**/*.ts",                  // Compile all source code .ts files
+    "tests/**/*.ts"                 // Compile all test code .ts files
+  ]
 }
