@@ -1,0 +1,33 @@
+{
+  "name": "@vartanovs/mongo-client",
+  "version": "0.0.0",
+  "author": "Serge Vartanov <vartanov.s@gmail.com>",
+  "description": "Client to access mongoDB data store",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "keywords": [
+    "mongo"
+  ],
+  "files": [
+    "/lib"
+  ],
+  "devDependencies": {
+    "typescript": "4.0.3"
+  },
+  "dependencies": {
+    "@types/mongodb": "3.5.31",
+    "mongodb": "3.6.2"
+  },
+  "scripts": {
+    "build": "tsc --build ./tsconfig.build.json",
+    "clean": "rm -rf ./lib",
+    "lint": "eslint ./src/*.ts ./tests/*.ts --fix",
+    "prepublish": "npm run clean && npm run build",
+    "test": "npm run test:compile && npm run test:coverage && npm run test:lint && npm run test:unit",
+    "test:compile": "tsc --noEmit",
+    "test:coverage": "NODE_ENV=test jest --coverage",
+    "test:lint": "eslint ./src/*.ts ./tests/*.ts",
+    "test:unit": "NODE_ENV=test jest"
+  }
+}

@@ -27,4 +27,5 @@ There is a variant of each script that runs for all packages, regardless of whet
 
 - **eslint-config-vartanovs-js**        - ESLint configuration for JavaScript development
 - **eslint-config-vartanovs-ts**        - ESLint configuration for TypeScript development
+- **@vartanovs/mongo-client**           - Client to access mongoDB data store
 - **@vartanovs/redis-client**           - Client to access redis data store

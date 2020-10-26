@@ -9,6 +9,6 @@
     "tests"                         // Do not compile test suite files
   ],
   "include": [
-    "src/**/*.ts"                      // Compile all source code .ts files
+    "src/**/*.ts"                   // Compile all source code .ts files
   ]
 }

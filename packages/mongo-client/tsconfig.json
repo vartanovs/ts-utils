@@ -5,7 +5,7 @@
     "rootDir": ".",                 // Specify input file root directory
   },
   "exclude": [
-    "node_modules",                 // Do not compile dependencies
+    "node _modules",                // Do not compile dependencies
   ],
   "include": [
     "src/**/*.ts",                  // Compile all source code .ts files
