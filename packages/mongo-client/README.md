@@ -1,6 +1,6 @@
 # MongoDB Client
 
-This package contains a client to access a MongoDB data store.
+This package contains a client to access a mongoDB data store.
 
 ## Installation
 
