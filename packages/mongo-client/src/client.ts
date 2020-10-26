@@ -31,14 +31,20 @@ class MongoClient {
     return this;
   }
 
-  public async deleteAll(collectionName: string) {
+  public deleteAll(collectionName: string) {
     if (!this.db) return MongoClient.logAndThrow(MongoMessages.MissingConnection);
 
     return this.db.collection(collectionName).deleteMany({})
       .then((deletedItems) => deletedItems.result);
   }
 
-  public async insertOne<T>(collectionName: string, item: T) {
+  public findAll(collectionName: string) {
+    if (!this.db) return MongoClient.logAndThrow(MongoMessages.MissingConnection);
+
+    return this.db.collection(collectionName).find({}).toArray();
+  }
+
+  public insertOne<T>(collectionName: string, item: T) {
     if (!this.db) return MongoClient.logAndThrow(MongoMessages.MissingConnection);
 
     return this.db.collection(collectionName).insertOne(item)
@@ -50,12 +56,6 @@ class MongoClient {
 
     return this.db.collection(collectionName).insertMany(items)
       .then((insertedItem) => insertedItem.ops);
-  }
-
-  public findAll(collectionName: string) {
-    if (!this.db) return MongoClient.logAndThrow(MongoMessages.MissingConnection);
-
-    return this.db.collection(collectionName).find({}).toArray();
   }
 }
 

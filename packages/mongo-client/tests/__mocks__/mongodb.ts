@@ -11,11 +11,16 @@ interface MockMongoClient extends EventEmitter {
   };
 }
 
+const deleteMany = jest.fn(() => ({ result: 'mockVal' }));
+const insertMany = jest.fn(<T>(items: T[]) => Promise.resolve({ ops: items }));
+const insertOne = jest.fn(<T>(item: T) => Promise.resolve({ ops: [item] }));
+const find = jest.fn(() => ({ toArray: jest.fn() }));
+
 const mockMongoCollection = {
-  deleteMany: jest.fn(() => ({ result: 'mockVal' })),
-  insertMany: jest.fn(<T>(items: T[]) => Promise.resolve({ ops: items })),
-  insertOne: jest.fn(<T>(item: T) => Promise.resolve({ ops: [item] })),
-  find: jest.fn(() => ({ toArray: jest.fn() })),
+  deleteMany,
+  insertMany,
+  insertOne,
+  find,
 };
 
 const mockMongoDB = {
