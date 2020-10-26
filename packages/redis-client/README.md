@@ -1,4 +1,4 @@
-# ESLint Configuration - TypeScript
+# Redis Client
 
 This package contains a client to access a redis data store.
 
@@ -11,7 +11,7 @@ _$ npm install @vartanovs/redis-client
 ## Basic Usage
 
 ```typescript
-import * as RedisClient from @vartanovs/redis-client;
+import * as RedisClient from '@vartanovs/redis-client';
 
 const redisOptions = {
   host: process.env.REDIS_HOST,
@@ -21,17 +21,13 @@ const redisOptions = {
 const redisClient = new RedisClient(redisOptions);
 redisClient.init();
 
-// Set, get and delete a string value using a unique key
-await redisClient.set('key', 'value');
-const val = await redisClient.get('key');
-await redisClient.delete('key');
-
-// Increment a counter
-await redisClient.increment('counterKey'); // Increment by 1
-await redisClient.increment('counterKey', 5); // Increment by 5
+// Insert, find and delete documents from a collection
+await redisClient.insertOne('animals', { name: 'anteater' });
+await redisClient.insertMany('animals', [{ name: 'bear' }, { name: 'cat' }]);
+const savedAnimals = await redisClient.findAll('animals');
+await redisClient.deleteAll('animals');
 ```
 
 ## Resources
 
-- [Redis Commands](https://redis.io/commands)
-- [IOredis Documentation](https://github.com/luin/ioredis/blob/master/README.md)
+- [Mongo Commands](https://docs.mongodb.com/manual/reference/command/)
