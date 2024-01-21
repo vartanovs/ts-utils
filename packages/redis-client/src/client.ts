@@ -3,10 +3,10 @@ import Redis, { RedisOptions } from 'ioredis';
 import { RedisMessages } from './constants';
 
 class RedisClient {
-  private client?: Redis.Redis;
-  private readonly options?: RedisOptions;
+  private client?: Redis;
+  private readonly options: RedisOptions;
 
-  constructor(options?: RedisOptions) {
+  constructor(options: RedisOptions) {
     if (!options?.host || !options?.port) console.warn(RedisMessages.MissingOptions);
     this.options = options;
   }

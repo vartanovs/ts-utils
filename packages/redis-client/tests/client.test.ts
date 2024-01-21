@@ -36,8 +36,8 @@ describe('server/lib/redisClient', () => {
     });
 
     it('should log a warning if initialization options are missing', () => {
-      new RedisClient().init();
-      expect(Redis).toHaveBeenCalledWith(undefined);
+      new RedisClient({}).init();
+      expect(Redis).toHaveBeenCalledWith({});
       expect(consoleWarnSpy).toHaveBeenCalledWith(RedisMessages.MissingOptions);
     });
 
