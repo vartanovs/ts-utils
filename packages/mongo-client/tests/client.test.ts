@@ -1,5 +1,3 @@
-/* global spyOn */
-
 import * as mongodb from 'mongodb';
 
 import MongoClient from '../src/client';
@@ -9,9 +7,7 @@ describe('packages/mongo-client/src/client', () => {
   const mockError = new Error('there was an error');
   const mockUrl = 'www.mock.url';
   const item = { mock: 'item' };
-  const mongoItem = { _id: 'abc', ...item };
   const item2 = { mock: 'item2' };
-  const mongoItem2 = { _id: 'def', ...item2 };
 
   let consoleLogSpy: jest.SpyInstance;
   let consoleErrorSpy: jest.SpyInstance;
@@ -37,13 +33,7 @@ describe('packages/mongo-client/src/client', () => {
 
   describe('this.client.on()', () => {
     beforeEach(() => {
-      consoleLogSpy = jest.spyOn(console, 'log').mockReturnValue();
       consoleErrorSpy = jest.spyOn(console, 'error').mockReturnValue();
-    });
-
-    it('should log a message when connected', () => {
-      mockMongo.emit('connect');
-      expect(consoleLogSpy).toHaveBeenCalledWith(MongoMessages.Connect);
     });
 
     it('should log an error when an error is emitted by the client', () => {
@@ -52,87 +42,101 @@ describe('packages/mongo-client/src/client', () => {
     });
   });
 
+  describe('.init()', () => {
+    beforeEach(() => {
+      consoleLogSpy = jest.spyOn(console, 'log').mockReturnValue();
+    });
+
+    it('should log a message when connected', async () => {
+      await mongoClient.init('mongodb');
+      expect(consoleLogSpy).toHaveBeenCalledWith(MongoMessages.Connect);
+    });
+  });
+
   describe('.deleteAll()', () => {
     it('should throw an error if called with an uninitialized mongo client', () => {
-      expect(() => uninitializedMongoClient.deleteAll('collection')).toThrowError();
+      expect(() => uninitializedMongoClient.deleteAll('collection')).toThrow();
       expect(consoleErrorSpy).toHaveBeenCalledWith(MongoMessages.MissingConnection);
       expect(mongoCollection.deleteMany).not.toHaveBeenCalled();
     });
 
     it('should call the .deleteMany() method on the mongo client and return deleted item count', async () => {
-      spyOn(mongoCollection, 'deleteMany').and.returnValue(Promise.resolve({ result: { n: 1 } }));
+      jest.mocked(mongoCollection.deleteMany).mockResolvedValue({ acknowledged: true, deletedCount: 1 });
 
-      await expect(mongoClient.deleteAll('collection')).resolves.toEqual({ n: 1 });
+      await expect(mongoClient.deleteAll('collection')).resolves.toEqual({ acknowledged: true, deletedCount: 1 });
       expect(mongoCollection.deleteMany).toHaveBeenCalledWith({});
     });
 
-    it('should throw an error if the mongo client throws an error', () => {
-      spyOn(mongoCollection, 'deleteMany').and.throwError('something went wrong');
+    it('should throw an error if the mongo client throws an error', async () => {
+      jest.mocked(mongoCollection.deleteMany).mockRejectedValueOnce(new Error('something went wrong'));
 
-      expect(() => mongoClient.deleteAll('collection')).toThrowError();
+      await expect(() => mongoClient.deleteAll('collection')).rejects.toThrow();
     });
   });
 
   describe('.findAll()', () => {
     it('should throw an error if called with an uninitialized mongo client', () => {
-      expect(() => uninitializedMongoClient.findAll('collection')).toThrowError();
+      expect(() => uninitializedMongoClient.findAll('collection')).toThrow();
       expect(consoleErrorSpy).toHaveBeenCalledWith(MongoMessages.MissingConnection);
       expect(mongoCollection.find).not.toHaveBeenCalled();
     });
 
     it('should call the .find() method on the mongo client and return an array of items', async () => {
-      spyOn(mongoCollection, 'find').and.returnValue({ toArray: () => Promise.resolve([]) });
+      jest.mocked(mongoCollection.find).mockReturnValue({ toArray: () => Promise.resolve([]) } as unknown as mongodb.FindCursor);
 
       await expect(mongoClient.findAll('collection')).resolves.toEqual([]);
       expect(mongoCollection.find).toHaveBeenCalledWith({});
     });
 
-    it('should throw an error if the mongo client throws an error', () => {
-      spyOn(mongoCollection, 'find').and.throwError('something went wrong');
+    it('should throw an error if the mongo client throws an error', async () => {
+      jest.mocked(mongoCollection.find)
+        .mockReturnValue({ toArray: () => Promise.reject(new Error('something went wrong')) } as mongodb.FindCursor);
 
-      expect(() => mongoClient.findAll('collection')).toThrowError();
+      await expect(() => mongoClient.findAll('collection')).rejects.toThrow();
     });
   });
 
   describe('.insertOne()', () => {
     it('should throw an error if called with an uninitialized mongo client', () => {
-      expect(() => uninitializedMongoClient.insertOne('collection', item)).toThrowError();
+      expect(() => uninitializedMongoClient.insertOne('collection', item)).toThrow();
       expect(consoleErrorSpy).toHaveBeenCalledWith(MongoMessages.MissingConnection);
       expect(mongoCollection.insertOne).not.toHaveBeenCalled();
     });
 
     it('should call the .insertOne() method on the mongo client and return the inserted item', async () => {
-      spyOn(mongoCollection, 'insertOne').and.returnValue(Promise.resolve({ ops: [mongoItem] }));
+      jest.mocked(mongoCollection.insertOne).mockResolvedValue({ acknowledged: true, insertedId: new mongodb.ObjectId('abc') });
 
-      await expect(mongoClient.insertOne('collection', item)).resolves.toEqual([mongoItem]);
+      await expect(mongoClient.insertOne('collection', item)).resolves.toEqual({ acknowledged: true, insertedId: { _id: 'abc' } });
       expect(mongoCollection.insertOne).toHaveBeenCalledWith(item);
     });
 
-    it('should throw an error if the mongo client throws an error', () => {
-      spyOn(mongoCollection, 'insertOne').and.throwError('something went wrong');
+    it('should throw an error if the mongo client throws an error', async () => {
+      jest.mocked(mongoCollection.insertOne).mockRejectedValueOnce(new Error('something went wrong'));
 
-      expect(() => mongoClient.insertOne('collection', item)).toThrowError();
+      await expect(() => mongoClient.insertOne('collection', item)).rejects.toThrow();
     });
   });
 
   describe('.insertMany()', () => {
     it('should throw an error if called with an uninitialized mongo client', () => {
-      expect(() => uninitializedMongoClient.insertMany('collection', [item, item2])).toThrowError();
+      expect(() => uninitializedMongoClient.insertMany('collection', [item, item2])).toThrow();
       expect(consoleErrorSpy).toHaveBeenCalledWith(MongoMessages.MissingConnection);
       expect(mongoCollection.insertMany).not.toHaveBeenCalled();
     });
 
     it('should call the .insertMany() method on the mongo client and return the inserted items', async () => {
-      spyOn(mongoCollection, 'insertMany').and.returnValue(Promise.resolve({ ops: [mongoItem, mongoItem2] }));
+      jest.mocked(mongoCollection.insertMany)
+        .mockResolvedValue({ acknowledged: true, insertedCount: 2, insertedIds: { 1: new mongodb.ObjectId('abc'), 2: new mongodb.ObjectId('def') } });
 
-      await expect(mongoClient.insertMany('collection', [item, item2])).resolves.toEqual([mongoItem, mongoItem2]);
+      await expect(mongoClient.insertMany('collection', [item, item2]))
+        .resolves.toEqual({ acknowledged: true, insertedCount: 2, insertedIds: { 1: { _id: 'abc' }, 2: { _id: 'def' } } });
       expect(mongoCollection.insertMany).toHaveBeenCalledWith([item, item2]);
     });
 
-    it('should throw an error if the mongo client throws an error', () => {
-      spyOn(mongoCollection, 'insertMany').and.throwError('something went wrong');
+    it('should throw an error if the mongo client throws an error', async () => {
+      jest.mocked(mongoCollection.insertMany).mockRejectedValueOnce(new Error('something went wrong'));
 
-      expect(() => mongoClient.insertMany('collection', [item, item2])).toThrowError();
+      await expect(() => mongoClient.insertMany('collection', [item, item2])).rejects.toThrow();
     });
   });
 });

@@ -8,6 +8,7 @@ interface MockMongoClient extends EventEmitter {
       insertOne: jest.Mock;
       find: jest.Mock;
     };
+    command: jest.Mock;
   };
 }
 
@@ -25,11 +26,15 @@ const mockMongoCollection = {
 
 const mockMongoDB = {
   collection: jest.fn(() => mockMongoCollection),
+  command: jest.fn(),
 };
 
 const mockMongoClient: MockMongoClient = new EventEmitter();
 mockMongoClient.db = jest.fn(() => mockMongoDB);
 
-const mongodb = { MongoClient: { connect: () => Promise.resolve(mockMongoClient) } };
+const mongodb = {
+  MongoClient: { connect: () => Promise.resolve(mockMongoClient) },
+  ObjectId: jest.fn().mockImplementation((id: string) => ({ _id: id })),
+};
 
 export = mongodb;

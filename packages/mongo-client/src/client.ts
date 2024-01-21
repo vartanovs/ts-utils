@@ -24,8 +24,9 @@ class MongoClient {
     // Create new MongoDB client and data store connection
     this.client = await mongodb.MongoClient.connect(this.uri);
     this.db = this.client.db(dbName);
+    await this.db.command({ ping: 1 });
 
-    this.client.on('connect', () => console.log(MongoMessages.Connect));
+    console.log(MongoMessages.Connect);
     this.client.on('error', (err: Error) => console.error(MongoMessages.Error, err));
 
     return this;
@@ -34,8 +35,7 @@ class MongoClient {
   public deleteAll(collectionName: string) {
     if (!this.db) return MongoClient.logAndThrow(MongoMessages.MissingConnection);
 
-    return this.db.collection(collectionName).deleteMany({})
-      .then((deletedItems) => deletedItems.result);
+    return this.db.collection(collectionName).deleteMany({});
   }
 
   public findAll(collectionName: string) {
@@ -44,18 +44,16 @@ class MongoClient {
     return this.db.collection(collectionName).find({}).toArray();
   }
 
-  public insertOne<T>(collectionName: string, item: T) {
+  public insertOne(collectionName: string, item: mongodb.BSON.Document) {
     if (!this.db) return MongoClient.logAndThrow(MongoMessages.MissingConnection);
 
-    return this.db.collection(collectionName).insertOne(item)
-      .then((insertedItem) => insertedItem.ops);
+    return this.db.collection(collectionName).insertOne(item);
   }
 
-  public insertMany<T>(collectionName: string, items: T[])  {
+  public insertMany(collectionName: string, items: mongodb.BSON.Document[]) {
     if (!this.db) return MongoClient.logAndThrow(MongoMessages.MissingConnection);
 
-    return this.db.collection(collectionName).insertMany(items)
-      .then((insertedItem) => insertedItem.ops);
+    return this.db.collection(collectionName).insertMany(items);
   }
 }
 

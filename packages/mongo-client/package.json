@@ -12,12 +12,11 @@
   "files": [
     "/lib"
   ],
-  "devDependencies": {
-    "typescript": "4.0.3"
-  },
   "dependencies": {
-    "@types/mongodb": "3.5.31",
-    "mongodb": "3.6.2"
+    "mongodb": "6.3.0"
+  },
+  "devDependencies": {
+    "typescript": "5.3.3"
   },
   "scripts": {
     "build": "tsc --build ./tsconfig.build.json",
