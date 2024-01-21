@@ -10,6 +10,10 @@
     "bunyan"
   ],
   "dependencies": {
-    "bunyan": "1.8.12"
+    "bunyan": "1.8.15"
+  },
+  "devDependencies": {
+    "@types/bunyan": "1.8.11",
+    "typescript": "5.3.3"
   }
 }
