@@ -1,6 +1,6 @@
 {
   "name": "@vartanovs/mongo-client",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Serge Vartanov <vartanov.s@gmail.com>",
   "description": "Client to access mongoDB data store",
   "license": "MIT",
