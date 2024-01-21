@@ -15,7 +15,7 @@
     "@types/jest": "29.5.11",
     "@types/node": "20.11.5",
     "eslint": "8.56.0",
-    "eslint-config-vartanovs-ts": "0.6.2",
+    "eslint-config-vartanovs-ts": "0.6.4",
     "jest": "29.7.0",
     "lerna": "6.6.2",
     "ts-jest": "29.1.1",
