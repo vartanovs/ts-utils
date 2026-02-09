@@ -4,15 +4,16 @@
   "author": "Serge Vartanov <vartanov.s@gmail.com>",
   "description": "ESLint Configuration for TypeScript Projects",
   "license": "MIT",
-  "main": "index.js",
+  "type": "module",
+  "main": "eslint.config.js",
   "keywords": [
     "eslint",
     "typescript"
   ],
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "6.19.0",
-    "@typescript-eslint/parser": "6.19.0",
-    "eslint": "8.56.0",
+    "@typescript-eslint/eslint-plugin": "8.54.0",
+    "@typescript-eslint/parser": "8.54.0",
+    "eslint": "9.39.2",
     "eslint-config-vartanovs-js": "0.6.2"
   },
   "scripts": {

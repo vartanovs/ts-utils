@@ -4,13 +4,16 @@
   "author": "Serge Vartanov <vartanov.s@gmail.com>",
   "description": "ESLint Configuration for JavaScript Projects",
   "license": "MIT",
-  "main": "index.js",
+  "type": "module",
+  "main": "eslint.config.js",
   "keywords": [
     "eslint",
     "javascript"
   ],
   "dependencies": {
-    "eslint": "8.56.0"
+    "@stylistic/eslint-plugin": "5.7.1",
+    "eslint": "9.39.2",
+    "globals": "17.3.0"
   },
   "scripts": {
     "test": "echo \"Info: No test suite for package eslint-config-vartanovs-js\" && exit 0",
