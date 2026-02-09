@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-vartanovs-ts",
-  "version": "0.6.4",
+  "version": "0.7.0",
   "author": "Serge Vartanov <vartanov.s@gmail.com>",
   "description": "ESLint Configuration for TypeScript Projects",
   "license": "MIT",
@@ -14,7 +14,7 @@
     "@typescript-eslint/eslint-plugin": "8.54.0",
     "@typescript-eslint/parser": "8.54.0",
     "eslint": "9.39.2",
-    "eslint-config-vartanovs-js": "0.6.2"
+    "eslint-config-vartanovs-js": "^0.7.0"
   },
   "scripts": {
     "test": "echo \"Info: No test suite for package eslint-config-vartanovs-ts\" && exit 0",
